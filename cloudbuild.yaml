@@ -1,7 +1,11 @@
 steps:
 - name: 'gcr.io/cloud-builders/go'
+  id: "Rodando o install do go"  
   args: ['install', '.']
   env: ['PROJECT_ROOT=soma']
 - name: 'gcr.io/cloud-builders/go'
   args: ['run', 'soma']
+  env: ['PROJECT_ROOT=soma']
+- name: 'gcr.io/cloud-builders/go'
+  args: ['test']
   env: ['PROJECT_ROOT=soma']
