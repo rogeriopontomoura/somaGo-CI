@@ -1,16 +1,30 @@
+# Etapas
 steps:
+# Imagem base
 - name: 'gcr.io/cloud-builders/go'
-  id: "Rodando o install do go"  
+  # Id da etapa
+  id: "Instalando dependências do Go"  
+  # Argumentos para execução
   args: ['install', '.']
+  # Variáveis passadas
   env: ['PROJECT_ROOT=soma']
+
+# Imagem base
 - name: 'gcr.io/cloud-builders/go'
-  id: "Roda o soma"
-  args: ['run', 'soma']
-  env: ['PROJECT_ROOT=soma']
-- name: 'gcr.io/cloud-builders/go'
-  id: "Roda o teste"
+  # Id da etapa
+  id: "Roda o teste da aplicação"
+  # Argumentos para execução
   args: ['test']
+  # Variáveis passadas
   env: ['PROJECT_ROOT=soma']
+
+# Imagem base
 - name: 'gcr.io/cloud-builders/docker'
-  env: ['PROJECT_ROOT=soma']
-  args: ['build', '-t', 'gcr.io/$PROJECT_ID/somaGo']
+  # Id da etapa
+  id: "Cria a imagem da aplicação"
+  # Argumentos para execução
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/soma-go', '.']
+
+# Faz o pull da imagem
+images:
+  - 'gcr.io/$PROJECT_ID/soma-go'
