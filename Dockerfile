@@ -1,3 +1,4 @@
+# Seleciona a imagem base
 FROM golang:1.12.6-alpine3.10 as build
 
 # Seta a pasta do go
@@ -16,5 +17,5 @@ COPY ./ $GOPATH/src
 # Seta o diretório de trabalho
 WORKDIR $GOPATH
 
-# Executa o arquivo
+# Executa o programa
 CMD go run ./src/main.go
