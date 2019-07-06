@@ -1,0 +1,7 @@
+steps:
+- name: 'gcr.io/cloud-builders/go'
+  args: ['install', '.']
+  env: ['PROJECT_ROOT=soma']
+- name: 'gcr.io/cloud-builders/go'
+  args: ['run', 'soma']
+  env: ['PROJECT_ROOT=soma']
