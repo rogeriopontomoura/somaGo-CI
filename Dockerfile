@@ -12,10 +12,10 @@ RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" \
 && chmod -R 777 "$GOPATH" 
 
 # Copia o arquivo
-COPY ./ $GOPATH/src
+COPY ./ $GOPATH/src/soma-go
 
 # Seta o diretório de trabalho
 WORKDIR $GOPATH
 
 # Executa o programa
-CMD go run ./src/main.go
+CMD go run ./src/soma-go/main.go
